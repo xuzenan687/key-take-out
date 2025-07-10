@@ -86,7 +86,12 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         Long userId=BaseContext.getCurrentId();
         shoppingCart.setUserId(userId);
         shoppingCart=shoppingCartMapper.getById(shoppingCart);
-        shoppingCart.setNumber(shoppingCart.getNumber()-1);
-        shoppingCartMapper.updateNumberById(shoppingCart);
+        if(shoppingCart.getNumber()==1){
+            shoppingCartMapper.deleteById(shoppingCart);
+        }else{
+            shoppingCart.setNumber(shoppingCart.getNumber()-1);
+            shoppingCartMapper.updateNumberById(shoppingCart);
+        }
+
     }
 }

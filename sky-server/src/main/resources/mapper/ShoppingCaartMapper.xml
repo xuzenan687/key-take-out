@@ -12,6 +12,16 @@
                 </choose>
             </where>
     </update>
+    <delete id="deleteById">
+        delete from shopping_cart
+        <where>
+            <if test="userId != null">user_id = #{userId}</if>
+            <choose>
+                <when test="dishId != null">and dish_id = #{dishId}</when>
+                <when test="setmealId != null">and setmeal_id = #{setmealId}</when>
+            </choose>
+        </where>
+    </delete>
 
     <select id="list" resultType="com.sky.entity.ShoppingCart">
         select * from shopping_cart
