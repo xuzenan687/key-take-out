@@ -13,6 +13,7 @@ import com.github.pagehelper.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface SetmealMapper {
@@ -58,4 +59,6 @@ public interface SetmealMapper {
     Setmeal getById(Long id);
     @Delete("delete from setmeal where id = #{id}")
     void deleteById(Long setmealId);
+
+    Integer countByMap(Map map);
 }
